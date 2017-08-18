@@ -1,0 +1,178 @@
+<head>
+  <title>consulting-website</title>
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+</head>
+
+<body>
+  {{> topBar}}
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas position-right off-canvas-absolute" id="offCanvasRight" data-transition="push" data-off-canvas>
+        <!-- Your menu or Off-canvas content goes here -->
+
+      <ul class="menu vertical menuBackground">
+        <li><a href="#">Business Strategy</a></li>
+        <li><a href="#">Technology</a></li>
+        <li><a href="#">Digital Marketing</a></li>
+        <li><a href="#">Partnership Negotiation</a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </div>
+    <div class="off-canvas-content" data-off-canvas-content>
+
+
+    {{> home}}
+    {{> rowOne}}
+
+  </div>
+</div>
+<script type="text/javascript">
+$( document ).ready(function() {
+    $(document).foundation();
+  //console.log( "ready!" );
+});
+function myFunction(x) {
+  x.classList.toggle("change");
+}
+</script>
+</body>
+
+<template name="home">
+  <img src="/images/banner.jpg" alt="">
+
+</template>
+
+<template name="topBar">
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <h2><img id="top-bar-logo" src='/images/cliusLogo.svg' title='' /></h2>
+    </div>
+      <div class="top-bar-right">
+
+          <div class="container" data-toggle="offCanvasRight" onclick="myFunction(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+          </div>
+
+      </div>
+    </div>
+  <script type="text/javascript">
+  $( document ).ready(function() {
+      $(document).foundation();
+    console.log( "ready!" );
+});
+  function myFunction(x) {
+    x.classList.toggle("change");
+  }
+  </script>
+</template>
+
+<template name="rowOne">
+  <div class="row expanded" style="margin-top: 15px;">
+    <div class="large-8 medium-12 small-12 columns ">
+      <div style="overflow: hidden; width: 100%; height: 300px;">
+        <a id="oneContainer" data-open="onePopUp">
+        <div href="#" class="container" style="width: 100%; height: 300px; position: relative;">
+          <img id="oneBackImage" class="backImage" style="width: 100%; height: 300px;" src="" alt="">
+          <div id="inside" class="inside" style="padding: 20px; position: absolute; top: 40px; left: 40px; background-color: white; width: 350px; height: 200px;">
+          <p id="oneTitle" class="title"></p>
+          <p id="oneDescription" class="description"></p>
+          <p id="bottom"><img id="oneFav" class="fav" align="top" src="http://via.placeholder.com/1x1"  onerror="standby1()"><span id="oneSite"></span><span id="oneAuthor" class="author"></span></p>
+          </div>
+        </div>
+        </a>
+        <div class="reveal large" id="onePopUp" style="height:750px;" data-reveal>
+          <button class="close-button" data-close aria-label="Close modal" style="height: 70px; width:70px; color: red;" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <iframe id="onePop" src="" width="100%" height="700px" data-close></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="large-4 medium-12 small-12 columns ">
+      <div style="overflow: hidden; width: 100%; height: 300px;">
+        <a id="twoContainer" data-open="twoPopUp">
+        <div id="twoContainer" href="#" class="container" style="width: 100%; height: 300px; position: relative;">
+          <img id="twoBackImage" class="backImage" style="width: 100%; height: 300px;" src="">
+          <div id="inside2" class="inside" style="padding: 20px; position: absolute; top: 40px; left: 40px; background-color: white; max-width:85%; height: auto;">
+          <p id="twoTitle" class="title"></p>
+          <p id="twoDescription" class="description"></p>
+          <p id="bottom2"><img id="twoFav" class="fav" align="top" src="http://via.placeholder.com/1x1" href="" onerror="standby2()"><span id="twoSite"></span><span id="twoAuthor" class="author" href="www.google.com"></span></p>
+          </div>
+        </div>
+        </a>
+        <div class="reveal large" id="twoPopUp" style="height:750px;" data-reveal>
+          <button class="close-button" data-close aria-label="Close modal" style="height: 70px; width:70px; color: red;" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <iframe id="twoPop" src="" width="100%" height="700px" data-close></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+  function standby1() {
+  document.getElementById('oneFav').remove();
+};
+  function standby2() {
+  document.getElementById('twoFav').remove();
+  console.log("testStandby");
+};
+
+  $(document).ready(function(){
+
+
+$(".container, this").hover(function(){
+  $(this).find(".backImage").addClass("transition");
+  //$(".backImage, this").addClass("transition");
+}, function() {
+      $(".backImage").removeClass('transition');
+  });
+ $(".container, this").hover(function(){
+   $(this).find(".inside").addClass("transition2");
+  //$(".inside, this").addClass("transition2");
+}, function() {
+      $(".inside, this").removeClass('transition2');
+  });
+
+  $.get("https://iframe.ly/api/iframely?url=https%3A%2F%2Fbiztechmagazine.com%2Farticle%2F2016%2F05%2F5-essential-considerations-expanding-cloud&api_key=443e12d67f0fd27373378b", function(data){
+
+  document.getElementById("oneTitle").innerHTML = data.meta.title;
+  document.getElementById("oneDescription").innerHTML =  data.meta.description.substring(0,200) + "...";
+  try {
+      document.getElementById("oneFav").src = data.links.icon[0].href;
+  }
+  catch(err) {
+      document.getElementById("oneFav").remove();
+  };
+  //document.getElementById("oneFav").src = data.links.icon[0].href;
+  document.getElementById("oneSite").innerHTML = "  " + data.meta.site;
+  document.getElementById("oneAuthor").innerHTML = data.meta.author + " / " + data.meta.date.substring(0,10);
+  document.getElementById("onePop").src = data.url;
+  document.getElementById("oneBackImage").src = data.links.thumbnail[0].href;
+});
+
+$.get("https://iframe.ly/api/iframely?url=https%3A%2F%2Fwww.ducttapemarketing.com%2Fbiggest-marketing-challenges-small-businesses%2F&api_key=443e12d67f0fd27373378b", function(data){
+
+document.getElementById("twoTitle").innerHTML = data.meta.title;
+document.getElementById("twoDescription").innerHTML =  data.meta.description.substring(0,200) + "...";
+try {
+    document.getElementById("twoFav").src = data.links.icon[0].href;
+}
+catch(err) {
+    document.getElementById("twoFav").remove();
+};
+document.getElementById("twoSite").innerHTML = "  " + data.meta.site;
+document.getElementById("twoAuthor").innerHTML = data.meta.author + " / " + data.meta.date.substring(0,10);
+document.getElementById("twoPop").src = data.url;
+document.getElementById("twoBackImage").src = data.links.thumbnail[0].href;
+});
+
+ // jQuery methods go here...
+
+});
+  </script>
+</template>

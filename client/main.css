@@ -1,0 +1,89 @@
+/* CSS declarations go here */
+.container {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+    border-radius: 3px;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+}
+#top-bar-logo {
+  height: 40px;
+  padding-left: 20px;
+}
+.menuBackground {
+  background-color: #720505;
+}
+#offCanvasRight {
+  background-color: #720505;
+}
+.menuBackground li a{
+  color: white;
+}
+
+.transition {
+  -webkit-transform: scale(1.03);
+  -moz-transform: scale(1.03);
+  -o-transform: scale(1.03);
+  transform: scale(1.03);
+}
+.backImage {
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+}
+
+.inside {
+  transition: transform .3s ease-in-out;
+  -webkit-transition: all .3s linear;
+  -o-transition: all .3s linear;
+  -moz-transition: all .3s linear;
+  -ms-transition: all .3s linear;
+
+}
+.transition2 {
+  transform: translate3d(0px, -2px, 0px);
+  box-shadow:         0px 4px 11px 3px rgba(50, 50, 50, 0.33);
+}
+
+.title {
+  font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 700;
+  margin: 0px;
+}
+.description {
+  font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+.fav {
+  height: 20px;
+  width: 20px;
+}
+
+.author {
+  padding-left: 20px;
+  color:#666a72;
+}
